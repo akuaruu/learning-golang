@@ -53,7 +53,6 @@ func looping() {
 	fmt.Println("--- PLAYLIST HARI")
 
 	// 1. Cara Classic Loop
-	// Ribet way
 	for i := 0; i < len(playlist); i++ {
 		fmt.Println("Putar (klasik):", playlist[i])
 	}
@@ -65,10 +64,6 @@ func looping() {
 	}
 
 	// 3. Mengabaikan index (pakai Underscore _)
-	// kadang kita ga butuh nomor urut, tapi cunan isi doang
-	// di GO, variabel yang dibuat tapi ga dipakai itu ERROR
-	//solusinya : buang ke "Tong Sampah" bernama "_"
-
 	for _, lagu := range playlist {
 		fmt.Println("sedang memutar: ", lagu)
 	}
