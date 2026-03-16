@@ -28,6 +28,6 @@ A simple command-line interface (CLI) tool to fetch and display the recent publi
 
 4. Example :
    ```bash/terminal
-   ./github-activity <github_username>
+   ./github-activity akuaruu
 
 Submitted for the https://roadmap.sh/projects/github-user-activity
