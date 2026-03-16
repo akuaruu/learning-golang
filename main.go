@@ -16,10 +16,8 @@ type GitHubEvent struct {
 
 	//adding payload
 	Payload struct {
-		Action  string `json:"action"`
-		Commits []struct {
-			Message string `json:"message"`
-		} `json:"commits"`
+		Action string `json:"action"`
+		Size   int    `json:"size"`
 	} `json:"payload"`
 }
 
@@ -76,8 +74,8 @@ func main() {
 	for _, event := range events {
 		switch event.Type {
 		case "PushEvent":
-			commitCount := len(event.Payload.Commits)
-			fmt.Printf("- Pushed %d commmit(s) to repository %s\n", commitCount, event.Repo.Name)
+
+			fmt.Printf("- Pushed %d commit(s) to repository %s\n", event.Payload.Size, event.Repo.Name)
 
 		case "IssuesEvent":
 			fmt.Printf("- %s issue in %s\n", event.Payload.Action, event.Repo.Name)
