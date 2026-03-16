@@ -13,6 +13,14 @@ type GitHubEvent struct {
 	Repo struct {
 		Name string `json:"name"`
 	} `json:"repo"`
+
+	//adding payload
+	Payload struct {
+		Action  string `json:"action"`
+		Commits []struct {
+			Message string `json:"message"`
+		} `json:"commits"`
+	} `json:"payload"`
 }
 
 func main() {
@@ -68,10 +76,11 @@ func main() {
 	for _, event := range events {
 		switch event.Type {
 		case "PushEvent":
-			fmt.Printf("- Pushed to repository %s\n", event.Repo.Name)
+			commitCount := len(event.Payload.Commits)
+			fmt.Printf("- Pushed %d commmit(s) to repository %s\n", commitCount, event.Repo.Name)
 
 		case "IssuesEvent":
-			fmt.Printf("- Opening new issue in %s\n", event.Repo.Name)
+			fmt.Printf("- %s issue in %s\n", event.Payload.Action, event.Repo.Name)
 
 		case "WatchEvent":
 			fmt.Printf("- starred on %s\n", event.Repo.Name)
